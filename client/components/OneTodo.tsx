@@ -115,14 +115,14 @@ export default function OneTodo({ userId }: Props) {
               bottom: '10px',
               width: '28px',
               background: `
-            repeating-linear-gradient(
-              to bottom,
-              #F8F3E6,
-              #F8F3E6 7px,
-              transparent 7px,
-              transparent 14px
-            )
-          `,
+      repeating-linear-gradient(
+        to bottom,
+        #F8F3E6,
+        #F8F3E6 7px,
+        transparent 7px,
+        transparent 14px
+      )
+    `,
               clipPath: 'polygon(100% 0%, 0% 50%, 100% 100%)',
               borderLeft: '2px dashed #D1BEB0',
               opacity: 0.9,
@@ -135,14 +135,14 @@ export default function OneTodo({ userId }: Props) {
               bottom: '10px',
               width: '28px',
               background: `
-            repeating-linear-gradient(
-              to bottom,
-              #F8F3E6,
-              #F8F3E6 7px,
-              transparent 7px,
-              transparent 14px
-            )
-          `,
+      repeating-linear-gradient(
+        to bottom,
+        #F8F3E6,
+        #F8F3E6 7px,
+        transparent 7px,
+        transparent 14px
+      )
+    `,
               clipPath: 'polygon(0% 0%, 100% 50%, 0% 100%)',
               borderRight: '2px dashed #D1BEB0',
               opacity: 0.9,
@@ -180,7 +180,7 @@ export default function OneTodo({ userId }: Props) {
                 borderRadius="50%"
                 opacity={0.8}
               />
-              {randomTodo?.task}
+              Completed!
             </Text>
 
             {/* Footer with faded signature */}

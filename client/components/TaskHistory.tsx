@@ -1,17 +1,14 @@
 import {
   Badge,
   Box,
-  Divider,
   Flex,
   Heading,
-  Icon,
   List,
   ListItem,
   Text,
   VStack,
 } from '@chakra-ui/react'
 import useTodos from '../apis/use-todos'
-import { FaCheckCircle, FaRegCalendarAlt, FaRegClock } from 'react-icons/fa'
 import DeleteSingleTodo from './DeleteSingleTodo'
 
 interface Props {

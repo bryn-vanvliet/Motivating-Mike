@@ -1,8 +1,6 @@
 import useUserTodos from '../apis/use-user-todos'
 import useUserDataAuth from '../apis/use-user-data-auth'
-
 import { Box, Button, Spinner, VStack, Text } from '@chakra-ui/react'
-
 import OneHeckle from './OneHeckle'
 import { useNavigate } from 'react-router-dom'
 import ConfettiExplosionEffect from './ConfettiExplosion'
@@ -182,7 +180,7 @@ export default function OneTodo({ userId }: Props) {
                 borderRadius="50%"
                 opacity={0.8}
               />
-              {randomTodo?.task}
+              Completed!
             </Text>
 
             {/* Footer with faded signature */}
@@ -328,6 +326,7 @@ export default function OneTodo({ userId }: Props) {
         </>
       )}
       <ConfettiExplosionEffect isExploding={isExploding} />
+
       <Button
         onClick={handleComplete}
         leftIcon={!showComplete ? <CheckIcon color="green" /> : undefined}
@@ -337,11 +336,10 @@ export default function OneTodo({ userId }: Props) {
         type="submit"
         size="md"
         borderWidth="1px"
-        borderColor="black" // Black border
-        // Vintage typewriter font
+        borderColor="black"
         fontWeight="bold"
         _hover={{
-          bg: showComplete ? 'yellow.500' : 'green.400', // Darker green on hover
+          bg: showComplete ? '#e5d880' : '#1bbf8d',
           transform: 'translateY(-2px)',
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         }}
