@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Box, Button, Flex, Spinner, VStack } from '@chakra-ui/react'
-import PickAvatar from '../components/PickAvatar'
 import TaskHistory from '../components/TaskHistory'
 import UserProfile from '../components/UserProfile'
 import {
@@ -17,9 +16,9 @@ export default function UserHomePage() {
   const [selectedAvatarId, setSelectedAvatarId] = useState<
     number | null | undefined
   >(userData?.avatarId)
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-  const openDrawer = () => setIsDrawerOpen(true)
-  const closeDrawer = () => setIsDrawerOpen(false)
+  // const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  // const openDrawer = () => setIsDrawerOpen(true)
+  // const closeDrawer = () => setIsDrawerOpen(false)
   const [stopLoading, setStopLoading] = useState(false)
 
   useEffect(() => {
@@ -83,7 +82,7 @@ export default function UserHomePage() {
     )
   }
   if (error) {
-    ; <Box height="100vh" backgroundColor="#B3D9E1">
+    ;<Box height="100vh" backgroundColor="#B3D9E1">
       <Flex height="100%" align="center" justify="center">
         <VStack>
           return <h2>Error: {error.message}</h2>
@@ -125,7 +124,7 @@ export default function UserHomePage() {
               userId={userData?.id}
               selectedAvatarId={selectedAvatarId}
             />
-            <Button
+            {/* <Button
               bgColor="#EFBA93"
               onClick={openDrawer}
               px={4}
@@ -135,7 +134,7 @@ export default function UserHomePage() {
               borderWidth="1px"
             >
               Change Avatar
-            </Button>
+            </Button> */}
           </Box>
 
           {/* Middle Panel: Task History */}
@@ -154,12 +153,12 @@ export default function UserHomePage() {
           {/* Right Panel (optional/empty) */}
           {/* <Box flexBasis="20%" /> */}
 
-          <PickAvatar
+          {/* <PickAvatar
             isOpen={isDrawerOpen}
             onClose={closeDrawer}
             setSelectedAvatarId={setSelectedAvatarId}
             userId={userData?.id}
-          />
+          /> */}
         </Flex>
         {/* <Button onClick={() => navigate(`/todo-list`)}>Add Todo</Button> */}
       </IfAuthenticated>

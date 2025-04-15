@@ -1,21 +1,28 @@
 import useUserData from '../apis/use-user-data'
 import useAvatarData from '../apis/use-avatar-data'
 import { Box, Skeleton, Text, Heading, Image } from '@chakra-ui/react'
+import PickAvatar from './PickAvatar'
+import { useState } from 'react'
+import useUserDataAuth from '../apis/use-user-data-auth'
 
 interface UserProfileProps {
   selectedAvatarId: number | null | undefined
   userId: number | null | undefined
 }
 
-export default function UserProfile({
-  selectedAvatarId,
-  userId,
-}: UserProfileProps) {
+export default function UserProfile({ userId }: UserProfileProps) {
+  const { data: userData } = useUserDataAuth()
   const {
     data: user,
     isPending: userIsPending,
     error: userError,
   } = useUserData(Number(userId))
+  const [selectedAvatarId, setSelectedAvatarId] = useState<
+    number | null | undefined
+  >(userData?.avatarId)
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const openDrawer = () => setIsDrawerOpen(true)
+  const closeDrawer = () => setIsDrawerOpen(false)
 
   const avatarId =
     selectedAvatarId !== null ? selectedAvatarId : user ? user.avatarId : null
@@ -73,12 +80,19 @@ export default function UserProfile({
           mx="auto"
           mb={4}
           border="1rem solid #B1CFB7"
+          onClick={openDrawer}
         />
 
         <Text fontSize="md" color="gray.600" mb={2}>
           Avatar: <strong>{avatar.name}</strong>
         </Text>
       </Box>
+      <PickAvatar
+        isOpen={isDrawerOpen}
+        onClose={closeDrawer}
+        setSelectedAvatarId={setSelectedAvatarId}
+        userId={userData?.id}
+      />
     </>
   )
 }
