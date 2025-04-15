@@ -88,7 +88,7 @@ export default function Home() {
       <Box height="100vh" backgroundColor="#B1CFB7">
         <Flex height="100%" align="center" justify="center">
           <VStack>
-            <h2>Error: {error}</h2>
+            <h2>{`Error: ${error.message}`}</h2>
           </VStack>
         </Flex>
       </Box>
