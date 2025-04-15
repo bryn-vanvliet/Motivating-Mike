@@ -13,6 +13,7 @@ import {
 import useTodos from '../apis/use-todos'
 import { FaCheckCircle, FaRegCalendarAlt, FaRegClock } from 'react-icons/fa'
 import DeleteSingleTodo from './DeleteSingleTodo'
+import InComplete from './InCompleteButton'
 
 interface Props {
   userId: number | null | undefined
@@ -107,6 +108,7 @@ export default function TaskHistory({ userId }: Props) {
                     <Badge ml={2} colorScheme={'green'}>
                       Complete
                     </Badge>
+                    <InComplete todoId={todo.id} />
                     <DeleteSingleTodo todoId={todo.id} />
                   </Box>
                 </Flex>
