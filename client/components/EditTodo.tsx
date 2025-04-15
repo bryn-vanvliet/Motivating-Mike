@@ -30,7 +30,6 @@ export interface Props {
 
 const urgencyMap: Record<string, number> = {
   Complete: 0,
-
   Chill: 1,
   'Probably should start': 2,
   'Severe(whoops)': 3,
@@ -80,11 +79,11 @@ function EditTodo({ todo, onSave, editId }: Props) {
     setFormState({ ...formState, urgency: urgencyValue })
   }
 
-  const handleBlur = (event: React.FormEvent<HTMLFormElement>) => {
-    if (formState.task !== todo.task) {
-      handleSubmit(event)
-    }
-  }
+  // const handleBlur = (event: React.FormEvent<HTMLFormElement>) => {
+  //   if (formState.task !== todo.task) {
+  //     handleSubmit(event)
+  //   }
+  // }
 
   return (
     <Box
@@ -111,7 +110,6 @@ function EditTodo({ todo, onSave, editId }: Props) {
               id="task"
               value={formState.task}
               onChange={handleChange}
-              onBlur={handleBlur}
             />
           </FormControl>
 
@@ -120,7 +118,7 @@ function EditTodo({ todo, onSave, editId }: Props) {
               <Text fontWeight="bold">Urgency</Text>
             </FormLabel>
             <Menu>
-              <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+              <MenuButton color="#2F4F4F" bgColor="#D7C2DB" as={Button} rightIcon={<ChevronDownIcon />}>
                 {reverseUrgencyMap[formState.urgency] || 'Select urgency'}
               </MenuButton>
               <MenuList>
@@ -162,13 +160,12 @@ function EditTodo({ todo, onSave, editId }: Props) {
             </Box>
           </FormControl>
 
-          <Button type="submit" colorScheme="blue">
+          <Button type="submit" color="#1E3D32" bgColor="#B1CFB7">
             Update Todo
           </Button>
         </VStack>
       </form>
     </Box>
-
   )
 }
 

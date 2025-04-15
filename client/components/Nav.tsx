@@ -76,10 +76,10 @@ export default function Nav() {
         </Drawer>
         <Flex justify="flex-end" gap={6} marginTop={4}>
           <IfAuthenticated>
-            <Button onClick={handleSignOut}>Sign Out</Button>
+            <Button variant="outline" color="#123456" borderColor="#D7C2DB" borderWidth="4px" onClick={handleSignOut}>Sign Out</Button>
           </IfAuthenticated>
           <IfNotAuthenticated>
-            <Button onClick={handleSignIn}>Sign In</Button>
+            <Button bgColor="#D7C2DB" onClick={handleSignIn}>Sign In</Button>
           </IfNotAuthenticated>
           <Icon
             as={HamburgerIcon}
