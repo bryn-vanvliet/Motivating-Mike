@@ -262,24 +262,23 @@ export default function OneTodo({ userId }: Props) {
         </>
       ) : (
         <>
-          <h4>You&apos;re all caught up!</h4>
-          <Button onClick={() => navigate(`/todo-list`)} colorScheme="teal">
+          <Text color="green.900" fontSize="3xl">You&apos;re all caught up!</Text>
+          <Button onClick={() => navigate(`/todo-list`)} bgColor="#B3D9E1" margin={4}>
             Add Todo
           </Button>
         </>
-      )}
+      )
+      }
       <ConfettiExplosionEffect isExploding={isExploding} />
 
       <Button
         onClick={handleComplete}
         leftIcon={!showComplete ? <CheckIcon color="green" /> : undefined}
-        bg={showComplete ? 'yellow.400' : 'green.300'} // Green background
-        color="#F5F5F5"
+        bg={showComplete ? '#EFD9AA' : 'green.300'} // Green background
+        color="#3B2F2F"
         variant="solid"
         type="submit"
         size="md"
-        borderWidth="1px"
-        borderColor="black"
         fontWeight="bold"
         _hover={{
           bg: showComplete ? '#e5d880' : '#1bbf8d',
@@ -292,6 +291,6 @@ export default function OneTodo({ userId }: Props) {
       >
         {showComplete ? 'Smash Another Task!' : 'Complete!'}
       </Button>
-    </VStack>
+    </VStack >
   )
 }
