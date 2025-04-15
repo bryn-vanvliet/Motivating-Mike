@@ -1,14 +1,22 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import useUserDataAuth from "../apis/use-user-data-auth";
-import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { useAuth0 } from '@auth0/auth0-react'
+import useUserDataAuth from '../apis/use-user-data-auth'
+import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import '@fontsource/indie-flower'
 
-import { Box, Button, FormLabel, Image, Input, SimpleGrid, Text } from "@chakra-ui/react";
-import { IfAuthenticated, IfNotAuthenticated } from "../components/Authenticated";
+import {
+  Box,
+  Button,
+  FormLabel,
+  Image,
+  Input,
+  SimpleGrid,
+} from '@chakra-ui/react'
+import { IfAuthenticated } from '../components/Authenticated'
 
 type FormState = {
-  name: string,
-  avatarId: number | null,
+  name: string
+  avatarId: number | null
 }
 
 const avatars = [
@@ -19,10 +27,14 @@ const avatars = [
 export default function Login() {
   const { user, getAccessTokenSilently } = useAuth0()
   const { data: userData, add } = useUserDataAuth()
-  const [formState, setFormState] = useState<FormState>({ name: '', avatarId: null })
-  const [currentAvatar, setCurrentAvatar] = useState<number | undefined | null>()
+  const [formState, setFormState] = useState<FormState>({
+    name: '',
+    avatarId: null,
+  })
+  const [currentAvatar, setCurrentAvatar] = useState<
+    number | undefined | null
+  >()
   const navigate = useNavigate()
-
 
   useEffect(() => {
     if (userData) {
@@ -35,7 +47,11 @@ export default function Login() {
 
     if (user) {
       add.mutateAsync({
-        newUser: { name: formState.name, authId: user.sub as string, avatarId: currentAvatar },
+        newUser: {
+          name: formState.name,
+          authId: user.sub as string,
+          avatarId: currentAvatar,
+        },
         token,
       })
     }
@@ -55,21 +71,10 @@ export default function Login() {
     if (formState.name == '') {
       alert('Please enter a name')
       return
-
-
     }
 
     await addUserData()
   }
-
-  // If a user signs up/signs in check to see if they have a name if not
-  // render user fields Name* and Pick Avatar
-  // If user does have a name, navigate to home page
-  //
-  // Custom button would have an onclick to set a state for currently selected avatar id
-  // each image is connected to the button
-  // in addUserData the avatarId would come from custom avatarButton state thingy
-  // type=button and preventDefault()
 
   return (
     <Box
@@ -80,32 +85,42 @@ export default function Login() {
       display="flex"
       justifyContent="center"
       alignItems="center"
+      fontFamily="'Indie Flower', cursive"
+      border="1px solid #ccc"
+      borderRadius="md"
+      boxShadow="md"
+      fontWeight="bold"
     >
-      <IfNotAuthenticated>
-        <Text>Please Login</Text>
-      </IfNotAuthenticated>
-      <IfAuthenticated>
-        <form onSubmit={handleSubmit}>
-          <FormLabel htmlFor="name">
-            What shall we call you?
-          </FormLabel>
-          <Input id="name" type="text" spellCheck="false" value={formState.name} onChange={handleChange} />
-          <FormLabel htmlFor="avatarId">
-            Choose your Motivational avatar
-          </FormLabel>
-          <SimpleGrid columns={3} spacing={4}>
-            {avatars.map((avatar) => (
-              <Button key={avatar.id} type="button" onClick={() => handleSelectAvatar(avatar.id)}>
-                <Image key={avatar.id} src={avatar.src} />
-              </Button>
-            ))}
-          </SimpleGrid>
-          <Button type="submit">
-            submit
-          </Button>
-        </form>
-        <h1>placeholder Login page - user logged in</h1>
-      </IfAuthenticated>
-    </Box >
+      {/* <IfAuthenticated> */}
+      <form onSubmit={handleSubmit}>
+        <FormLabel htmlFor="name" as="h3" fontSize="2xl" mb={4}>
+          What shall we call you?
+        </FormLabel>
+        <Input
+          id="name"
+          type="text"
+          spellCheck="false"
+          value={formState.name}
+          onChange={handleChange}
+        />
+        <FormLabel htmlFor="avatarId" as="h3" fontSize="2xl" mb={4} mt={8}>
+          Choose your Motivational avatar
+        </FormLabel>
+        <SimpleGrid columns={3} spacing={6}>
+          {avatars.map((avatar) => (
+            <Button
+              key={avatar.id}
+              style={{ width: '250px', height: '250px' }}
+              type="button"
+              onClick={() => handleSelectAvatar(avatar.id)}
+            >
+              <Image key={avatar.id} src={avatar.src} />
+            </Button>
+          ))}
+        </SimpleGrid>
+        <Button type="submit">submit</Button>
+      </form>
+      {/* </IfAuthenticated> */}
+    </Box>
   )
 }

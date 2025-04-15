@@ -1,8 +1,11 @@
 import useUserTodos from '../apis/use-user-todos'
 import useUserDataAuth from '../apis/use-user-data-auth'
-import { Box, List, Spinner, Text } from '@chakra-ui/react'
+import { Box, Button, Spinner, VStack, Text } from '@chakra-ui/react'
 import OneHeckle from './OneHeckle'
 import { useNavigate } from 'react-router-dom'
+import ConfettiExplosionEffect from './ConfettiExplosion'
+import useUpdateTodoStatus from '../apis/use-update-status'
+import { useState } from 'react'
 import HomePageAvatar from './HomePageAvatar'
 
 interface Props {
@@ -17,6 +20,9 @@ export default function OneTodo({ userId }: Props) {
     isPending: todosPending,
     error: todosError,
   } = useUserTodos(userId)
+  const updateStatus = useUpdateTodoStatus()
+  const [isExploding, setIsExploding] = useState(false)
+  const [showComplete, setShowComplete] = useState(false)
 
   if (isPending || todosPending) {
     return (
@@ -60,15 +66,85 @@ export default function OneTodo({ userId }: Props) {
       ? filteredTodos[Math.floor(Math.random() * filteredTodos.length)]
       : null
 
+  const handleComplete = () => {
+    if (!showComplete && randomTodo) {
+      setIsExploding(true)
+      setTimeout(() => setIsExploding(false), 3000)
+      updateStatus.mutate(randomTodo.id)
+    }
+    setShowComplete((prev) => !prev)
+  }
+
   return (
-    <>
-      {randomTodo ? (
+    <VStack>
+      {showComplete ? (
         <>
           <Box position="relative" transform="translateX(40%)" mb={2}>
             <OneHeckle
               userId={userData.id}
               avatarId={userData.avatarId}
-              urgency={randomTodo?.urgency}
+              urgency={0}
+            />
+          </Box>
+          <Box position="relative" display="inline-block">
+            <Box boxSize="150px" borderRadius="full" overflow="hidden">
+              <HomePageAvatar avatarId={userData.avatarId} />
+            </Box>
+          </Box>
+          {/* Movie Ticket Style Todo */}
+          <Box
+            backgroundColor="#F8F3E6" // Warm pastel parchment
+            border="1.5px dashed #D1BEB0" // Soft taupe dashed border
+            borderRadius="4px"
+            px={5}
+            py={3}
+            position="relative"
+            width="280px"
+            textAlign="left"
+            fontFamily="'Homemade Apple', cursive" // Handwritten style
+            color="#6D5C54" // Muted brown-gray
+            boxShadow="0 2px 8px rgba(0,0,0,0.05)"
+            lineHeight="1.6"
+          >
+            {/* Handwritten header */}
+            <Text
+              fontSize="lg"
+              fontWeight="bold"
+              mb={2}
+              borderBottom="1px dashed #D1BEB0"
+              pb={1}
+            >
+              Current todo
+            </Text>
+
+            {/* title - styled like notepad item */}
+            <Text fontSize="xl" mb={3} pl={3} position="relative">
+              <Box
+                as="span"
+                position="absolute"
+                left={0}
+                top="8px"
+                w="8px"
+                h="8px"
+                bg="#D1BEB0"
+                borderRadius="50%"
+              />
+              Completed!
+            </Text>
+
+            {/* Subtle footer */}
+            <Text fontSize="xs" mt={3} textAlign="right" opacity={0.7}>
+              Motivating Mike
+            </Text>
+          </Box>
+        </>
+      ) : randomTodo ? (
+        <>
+          <Box position="relative" transform="translateX(40%)" mb={2}>
+            <OneHeckle
+              userId={userData.id}
+              avatarId={userData.avatarId}
+              urgency={randomTodo.urgency}
             />
           </Box>
 
@@ -186,9 +262,15 @@ export default function OneTodo({ userId }: Props) {
       ) : (
         <>
           <h4>You&apos;re all caught up!</h4>
-          <button onClick={() => navigate(`/todo-list`)}>Add Todo</button>
+          <Button onClick={() => navigate(`/todo-list`)} colorScheme="teal">
+            Add Todo
+          </Button>
         </>
       )}
-    </>
+      <ConfettiExplosionEffect isExploding={isExploding} />
+      <Button onClick={handleComplete}>
+        {showComplete ? 'Smash Another Task!' : 'Complete!'}
+      </Button>
+    </VStack>
   )
 }

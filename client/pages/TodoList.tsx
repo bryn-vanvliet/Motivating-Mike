@@ -19,7 +19,6 @@ import {
   ListItem,
   Text,
   VStack,
-  Image,
   Button,
   Spinner,
   Badge,
@@ -37,7 +36,6 @@ export default function TodoList() {
   const [editId, setEditId] = useState(0)
   const [stopLoading, setStopLoading] = useState(false)
 
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setStopLoading(true)
@@ -53,7 +51,6 @@ export default function TodoList() {
   const handleClick = (id: number) => {
     setEditId(id)
   }
-
 
   if ((isPending || todoPending) && !stopLoading) {
     return (
@@ -117,7 +114,7 @@ export default function TodoList() {
             justifyContent="center"
             alignItems="center"
           >
-            <VStack >
+            <VStack>
               <Box justifyContent="left">
                 <Heading as="h3" fontFamily="Bangers">
                   <Text
@@ -132,26 +129,29 @@ export default function TodoList() {
                 </Heading>
               </Box>
 
-              <Box
-                bg="yellow.50"
-                border="1px solid #ccc"
-                borderRadius="md"
-                px={4}
-                py={2}
-                boxShadow="md"
-                // fontFamily="'Indie Flower', cursive"
-                backgroundSize="100% 30px"
-                whiteSpace="pre-wrap"
-                width="100%"
-                maxHeight="60vh"
-                backgroundAttachment="local"
-              >
-                {editId === 0 ? (
+              {editId === 0 ? (
+                <Box
+                  bg="yellow.50"
+                  border="1px solid #ccc"
+                  borderRadius="md"
+                  px={4}
+                  py={2}
+                  boxShadow="md"
+                  // fontFamily="'Indie Flower', cursive"
+                  backgroundSize="100% 30px"
+                  whiteSpace="pre-wrap"
+                  width="100%"
+                  maxHeight="60vh"
+                  backgroundAttachment="local"
+                  overflow="auto"
+                >
                   <List
                     spacing={0}
                     fontSize="md"
                     lineHeight="30px"
                     fontFamily="'Courier New', monospace"
+                    width="auto"
+                    height="auto"
                   >
                     {todos
                       .filter((todo) => !todo.completed)
@@ -207,21 +207,8 @@ export default function TodoList() {
                           >
                             <Flex w="25vw" alignItems="center">
                               {todo.task}
-                              <Badge
-                                ml={2}
-                                colorScheme={
-                                  todo.urgency === 3
-                                    ? 'red'
-                                    : todo.urgency === 2
-                                      ? 'yellow'
-                                      : 'green'
-                                }
-                              >
-                                {todo.urgency === 3
-                                  ? 'Severe'
-                                  : todo.urgency === 2
-                                    ? 'Should do'
-                                    : 'Chill'}
+                              <Badge ml={2} colorScheme={'green'}>
+                                Complete
                               </Badge>
                             </Flex>
                           </ListItem>
@@ -229,19 +216,19 @@ export default function TodoList() {
                         </Flex>
                       ))}
                   </List>
-                ) : (
-                  todos
-                    .filter((todo) => todo.id === editId)
-                    .map((todo) => (
-                      <EditTodo
-                        key={todo.id}
-                        todo={todo}
-                        editId={editId}
-                        onSave={() => setEditId(0)} // After save, reset editId to 0 to show the list again
-                      />
-                    ))
-                )}
-              </Box>
+                </Box>
+              ) : (
+                todos
+                  .filter((todo) => todo.id === editId)
+                  .map((todo) => (
+                    <EditTodo
+                      key={todo.id}
+                      todo={todo}
+                      editId={editId}
+                      onSave={() => setEditId(0)} // After save, reset editId to 0 to show the list again
+                    />
+                  ))
+              )}
 
               <Box pt={4}>
                 <Link to="/">
@@ -250,92 +237,6 @@ export default function TodoList() {
               </Box>
             </VStack>
           </Box>
-
-          <Flex>
-            <Box>
-              <Image
-                src="/funPhotos/big-blue-fish.webp"
-                alt="A large fish"
-                boxSize="82px"
-                position="absolute"
-                top="14%"
-                left="74%"
-                zIndex="1"
-                width="auto"
-              />
-              <Image
-                src="/funPhotos/pencil-paper.webp"
-                alt="A pencil & a book"
-                boxSize="110px"
-                position="absolute"
-                top="31%"
-                left="54.5%"
-                zIndex="1"
-                width="auto"
-              />
-              <Image
-                src="/funPhotos/hammer.webp"
-                alt="a hammer"
-                boxSize="128px"
-                position="absolute"
-                top="15%"
-                left="29%"
-                zIndex="1"
-                width="auto"
-              />
-              <Image
-                src="/funPhotos/tree.webp"
-                alt="A lovely tree"
-                boxSize="280px"
-                position="absolute"
-                top="70%"
-                left="84%"
-                zIndex="1"
-                width="auto"
-              />
-              <Image
-                src="/funPhotos/bush-2.webp"
-                alt="A bush"
-                boxSize="150px"
-                position="absolute"
-                left="5%"
-                top="82%"
-                zIndex="2"
-                width="auto"
-              />
-              <Image
-                src="/funPhotos/bush-1.webp"
-                alt="A bush"
-                boxSize="150px"
-                position="absolute"
-                left="10%"
-                top="81%"
-                zIndex="1"
-                width="auto"
-              />
-              <Image
-                src="/funPhotos/bush-3.webp"
-                alt="A bush"
-                boxSize="150px"
-                position="absolute"
-                left="2%"
-                top="81%"
-                zIndex="1"
-                width="auto"
-              />
-              <Image
-                src="/funPhotos/squirell.webp"
-                alt="A squirell holding an acorn"
-                boxSize="120px"
-                position="absolute"
-                left="9%"
-                top="79%"
-                zIndex="1"
-                width="auto"
-              />
-              {/* Add other images here */}
-            </Box>
-          </Flex>
         </Flex>
       </IfAuthenticated>
       <IfNotAuthenticated>

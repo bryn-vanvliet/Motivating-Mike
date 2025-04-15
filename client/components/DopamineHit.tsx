@@ -1,15 +1,22 @@
 import useUserTodos from '../apis/use-user-todos'
 import useUserDataAuth from '../apis/use-user-data-auth'
-import { Box, Spinner, List, Text } from '@chakra-ui/react'
+
+
+
+import { Box, Button, Spinner, VStack, Text } from '@chakra-ui/react'
+
 import OneHeckle from './OneHeckle'
 import { useNavigate } from 'react-router-dom'
+import ConfettiExplosionEffect from './ConfettiExplosion'
+import useUpdateTodoStatus from '../apis/use-update-status'
+import { useState } from 'react'
 import HomePageAvatar from './HomePageAvatar'
 
 interface Props {
   userId: number
 }
 
-export default function DopamineHit({ userId }: Props) {
+export default function OneTodo({ userId }: Props) {
   const navigate = useNavigate()
   const { data: userData, isPending, error } = useUserDataAuth()
   const {
@@ -17,6 +24,9 @@ export default function DopamineHit({ userId }: Props) {
     isPending: todosPending,
     error: todosError,
   } = useUserTodos(userId)
+  const updateStatus = useUpdateTodoStatus()
+  const [isExploding, setIsExploding] = useState(false)
+  const [showComplete, setShowComplete] = useState(false)
 
   if (isPending || todosPending) {
     return (
@@ -60,15 +70,24 @@ export default function DopamineHit({ userId }: Props) {
       ? filteredTodos[Math.floor(Math.random() * filteredTodos.length)]
       : null
 
+  const handleComplete = () => {
+    if (!showComplete && randomTodo) {
+      setIsExploding(true)
+      setTimeout(() => setIsExploding(false), 3000)
+      updateStatus.mutate(randomTodo.id)
+    }
+    setShowComplete((prev) => !prev)
+  }
+
   return (
-    <>
-      {randomTodo ? (
+    <VStack>
+      {showComplete ? (
         <>
           <Box position="relative" transform="translateX(40%)" mb={2}>
             <OneHeckle
               userId={userData.id}
               avatarId={userData.avatarId}
-              urgency={randomTodo?.urgency}
+              urgency={0}
             />
           </Box>
           <Box position="relative" display="inline-block">
@@ -164,7 +183,7 @@ export default function DopamineHit({ userId }: Props) {
       borderRadius="50%"
       opacity={0.8}
     />
-    {randomTodo.task}
+    {randomTodo?.task}
   </Text>
 
   {/* Footer with faded signature */}
@@ -183,9 +202,15 @@ export default function DopamineHit({ userId }: Props) {
       ) : (
         <>
           <h4>You&apos;re all caught up!</h4>
-          <button onClick={() => navigate(`/todo-list`)}>Add Todo</button>
+          <Button onClick={() => navigate(`/todo-list`)} colorScheme="teal">
+            Add Todo
+          </Button>
         </>
       )}
-    </>
+      <ConfettiExplosionEffect isExploding={isExploding} />
+      <Button onClick={handleComplete}>
+        {showComplete ? 'Smash Another Task!' : 'Complete!'}
+      </Button>
+    </VStack>
   )
 }

@@ -1,4 +1,5 @@
 import {
+  Text,
   Button,
   Input,
   Menu,
@@ -69,7 +70,9 @@ function AddTodo({ userId }: Props) {
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
           <FormControl>
-            <FormLabel>Task</FormLabel>
+            <FormLabel htmlFor="task">
+              <Text fontWeight="bold">Task</Text>
+            </FormLabel>
             <Input
               placeholder="e.g. Do dishes"
               type="text"
@@ -80,6 +83,9 @@ function AddTodo({ userId }: Props) {
             />
           </FormControl>
           <FormControl>
+            <FormLabel htmlFor="urgency">
+              <Text fontWeight="bold">Urgency</Text>
+            </FormLabel>
             <Menu>
               <MenuButton
                 as={Button}
@@ -136,7 +142,9 @@ function AddTodo({ userId }: Props) {
           </FormControl>
 
           <FormControl>
-            <FormLabel>Due Date</FormLabel>
+            <FormLabel htmlFor="due date">
+              <Text fontWeight="bold">Due Date</Text>
+            </FormLabel>
             <Box
               as="div"
               width="100%"

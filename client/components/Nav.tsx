@@ -45,8 +45,8 @@ export default function Nav() {
       <Box position="absolute" right={3} top={2}>
         <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton m={2} />
+          <DrawerContent paddingTop={12}>
+            <DrawerCloseButton m={6} />
             <DrawerHeader></DrawerHeader>
 
             <DrawerBody>
@@ -74,7 +74,7 @@ export default function Nav() {
             <DrawerFooter></DrawerFooter>
           </DrawerContent>
         </Drawer>
-        <Flex justify="flex-end" gap={6}>
+        <Flex justify="flex-end" gap={6} marginTop={4}>
           <IfAuthenticated>
             <Button onClick={handleSignOut}>Sign Out</Button>
           </IfAuthenticated>
@@ -83,9 +83,11 @@ export default function Nav() {
           </IfNotAuthenticated>
           <Icon
             as={HamburgerIcon}
-            boxSize={6}
-            color="red.500"
+            boxSize={10}
+            color="#EFD9AA"
             onClick={onOpen}
+            marginTop={0.5}
+            marginRight={4}
           />
         </Flex>
       </Box>

@@ -80,31 +80,15 @@ export default function UserHomePage() {
     )
   }
   if (error) {
-    ; <Box
-      height="100vh"
-      flex="1"
-      flexDir="column"
-      backgroundColor="#B1CFB7"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      return <h2>Error: {error.message}</h2>
+    <Box height="100vh" backgroundColor="#B1CFB7">
+      <Flex height="100%" align="center" justify="center">
+        <VStack>
+          return <h2>Error: {error.message}</h2>
+        </VStack>
+      </Flex>
     </Box>
   }
-  if (!userData || userData.id === undefined) {
-    ; <Box
-      width="100vw"
-      flex="1"
-      flexDir="column"
-      backgroundColor="#B1CFB7"
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-    >
-      return <h2>No user data found</h2>
-    </Box>
-  }
+
 
 
   return (
