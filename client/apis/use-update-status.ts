@@ -1,7 +1,7 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 const useUpdateTodoStatus = () => {
-  // const queryClient = useQueryClient()
+  const queryClient = useQueryClient()
 
   const updateStatus = async (id: number) => {
     const response = await fetch(`/api/v1/todostatus/${id}`, {
@@ -22,7 +22,7 @@ const useUpdateTodoStatus = () => {
   return useMutation({
     mutationFn: updateStatus,
     onSuccess: () => {
-      // queryClient.invalidateQueries({ queryKey: ['todos'] })
+      queryClient.invalidateQueries({ queryKey: ['todos'] })
     },
   })
 }

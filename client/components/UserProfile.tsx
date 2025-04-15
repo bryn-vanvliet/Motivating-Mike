@@ -43,34 +43,49 @@ export default function UserProfile({
   const altImage = avatar.image.replace('-', ' ').replace('.webp', '')
 
   return (
-    <Box
-      width="330px"
-      mx="auto"
-      p={6}
-      boxShadow="lg"
-      borderRadius="lg"
-      bg="#FAF9F6"
-      textAlign="center"
-      transition="all 0.3s ease"
-      _hover={{ transform: 'scale(1.02)' }}
-    >
-      <Heading mb={6} fontSize="2xl" textAlign="center">
-        {user.name}
-      </Heading>
-
-      <Image
-        src={avatar.image}
-        alt={altImage}
-        borderRadius="full"
-        boxSize="150px"
+    <>
+      <Box
+        width="330px"
         mx="auto"
-        mb={4}
-        border="4px solid #4fc3f7"
-      />
+        boxShadow="lg"
+        borderRadius="lg"
+        bg="#FAF9F6"
+        textAlign="center"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        height="100px"
+      >
+        <Heading mb={0} fontSize="2xl" textAlign="center">
+          {user.name}
+        </Heading>
+      </Box>
 
-      <Text fontSize="md" color="gray.600" mb={2}>
-        Avatar: <strong>{avatar.name}</strong>
-      </Text>
-    </Box>
+      <Box
+        width="330px"
+        mx="auto"
+        p={6}
+        boxShadow="lg"
+        borderRadius="lg"
+        bg="#FAF9F6"
+        textAlign="center"
+        transition="all 0.3s ease"
+        _hover={{ transform: 'scale(1.02)' }}
+      >
+        <Image
+          src={avatar.image}
+          alt={altImage}
+          borderRadius="full"
+          boxSize="150px"
+          mx="auto"
+          mb={4}
+          border="4px solid #4fc3f7"
+        />
+
+        <Text fontSize="md" color="gray.600" mb={2}>
+          Avatar: <strong>{avatar.name}</strong>
+        </Text>
+      </Box>
+    </>
   )
 }
