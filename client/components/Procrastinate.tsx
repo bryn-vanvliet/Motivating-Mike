@@ -66,8 +66,8 @@ export default function Procrastinate({ userId }: Props) {
       />
       </Box>
         <Box position="relative" display="inline-block">
-                <Box boxSize="150px" borderRadius="full" overflow="hidden">
-                <HomePageAvatar avatarId={userData.avatarId} />
+                    <Box boxSize="200px" borderRadius="full" overflow="hidden">
+                      <HomePageAvatar avatarId={userData.avatarId} />
                 </Box>
                 </Box>
        
