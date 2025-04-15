@@ -22,7 +22,6 @@ export default function UserHomePage() {
   const closeDrawer = () => setIsDrawerOpen(false)
   const [stopLoading, setStopLoading] = useState(false)
 
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setStopLoading(true)
@@ -34,7 +33,6 @@ export default function UserHomePage() {
   const handleSignIn = () => {
     loginWithRedirect()
   }
-
 
   if (isPending && !stopLoading) {
     return (
@@ -48,7 +46,6 @@ export default function UserHomePage() {
       </Box>
     )
   }
-
 
   // -- IfNotAuthenticated Path -- //
   if (!isAuthenticated && stopLoading) {
@@ -80,7 +77,7 @@ export default function UserHomePage() {
     )
   }
   if (error) {
-    <Box height="100vh" backgroundColor="#B1CFB7">
+    ;<Box height="100vh" backgroundColor="#B1CFB7">
       <Flex height="100%" align="center" justify="center">
         <VStack>
           return <h2>Error: {error.message}</h2>
@@ -88,8 +85,6 @@ export default function UserHomePage() {
       </Flex>
     </Box>
   }
-
-
 
   return (
     <Box minHeight="100vh" bg="#FAF9F6">
@@ -110,6 +105,7 @@ export default function UserHomePage() {
             flexBasis={['100%', '30%']}
             display="flex"
             flexDirection="column"
+            height="45vh"
             marginX="auto"
             alignItems="center"
             gap={6}
@@ -131,9 +127,9 @@ export default function UserHomePage() {
               transition="all 0.2s"
               borderRadius="md"
               borderWidth="1px"
-            // _hover={{ bg: 'gray.400' }}
-            // _expanded={{ bg: 'blue.400' }}
-            // _focus={{ boxShadow: 'outline' }}
+              // _hover={{ bg: 'gray.400' }}
+              // _expanded={{ bg: 'blue.400' }}
+              // _focus={{ boxShadow: 'outline' }}
             >
               Change Avatar
             </Button>
@@ -144,12 +140,8 @@ export default function UserHomePage() {
             flexBasis={['100%', '60%']}
             display="flex"
             flexDirection="column"
+            height="45vh"
             marginX="auto"
-            gap={3}
-            bg="white"
-            p={6}
-            borderRadius="xl"
-            boxShadow="lg"
             overflowY="auto"
             position="relative"
           >
