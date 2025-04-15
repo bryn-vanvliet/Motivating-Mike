@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-const useUpdateTodoStatus = () => {
+const useUpdateIncomplete = () => {
   const queryClient = useQueryClient()
 
   const updateStatus = async (id: number) => {
-    const response = await fetch(`/api/v1/todostatus/complete/${id}`, {
+    const response = await fetch(`/api/v1/todostatus/incomplete/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({}),
       headers: {
@@ -27,4 +27,4 @@ const useUpdateTodoStatus = () => {
   })
 }
 
-export default useUpdateTodoStatus
+export default useUpdateIncomplete

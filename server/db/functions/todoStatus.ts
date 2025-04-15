@@ -20,10 +20,18 @@ export default function formatDate(newDate: number) {
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
 }
 
-export async function updateStatusById(Id: number) {
+export async function updateCompleteById(Id: number) {
   const todoList = await db('todos')
     .where('todos.id', Id)
     .update({ completed: formatDate(Date.now()), urgency: 0 })
+
+  return todoList
+}
+
+export async function updateIncompleteById(Id: number) {
+  const todoList = await db('todos')
+    .where('todos.id', Id)
+    .update({ completed: null, urgency: 3 })
 
   return todoList
 }
