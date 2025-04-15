@@ -319,13 +319,18 @@ export default function OneTodo({ userId }: Props) {
         </>
       ) : (
         <>
-          <Text color="green.900" fontSize="3xl">You&apos;re all caught up!</Text>
-          <Button onClick={() => navigate(`/todo-list`)} bgColor="#B3D9E1" margin={4}>
+          <Text color="green.900" fontSize="3xl">
+            You&apos;re all caught up!
+          </Text>
+          <Button
+            onClick={() => navigate(`/todo-list`)}
+            bgColor="#B3D9E1"
+            margin={4}
+          >
             Add Todo
           </Button>
         </>
-      )
-      }
+      )}
       <ConfettiExplosionEffect isExploding={isExploding} />
 
       <Button
@@ -338,7 +343,7 @@ export default function OneTodo({ userId }: Props) {
         size="md"
         fontWeight="bold"
         _hover={{
-          bg: showComplete ? '#e5d880' : '#1bbf8d',
+          bg: showComplete ? 'yellow.500' : 'green.400', // Darker green on hover
           transform: 'translateY(-2px)',
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         }}
@@ -348,6 +353,6 @@ export default function OneTodo({ userId }: Props) {
       >
         {showComplete ? 'Smash Another Task!' : 'Complete!'}
       </Button>
-    </VStack >
+    </VStack>
   )
 }
