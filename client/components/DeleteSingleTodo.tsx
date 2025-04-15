@@ -1,5 +1,5 @@
 import { useDeleteTodo } from '../apis/use-delete-todo'
-import { DeleteIcon } from '@chakra-ui/icons'
+import { Box, DeleteIcon } from '@chakra-ui/icons'
 
 interface Props {
   todoId: number
@@ -12,11 +12,13 @@ export default function DeleteSingleTodo(props: Props) {
   }
 
   return (
-    <DeleteIcon
-      marginLeft={4}
-      color="black"
-      onClick={handleDelete}
-      cursor="pointer"
-    />
+    <Box>
+      <DeleteIcon
+        marginLeft={2}
+        color="black"
+        onClick={handleDelete}
+        cursor="pointer"
+      />
+    </Box>
   )
 }

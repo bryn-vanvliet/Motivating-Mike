@@ -1,5 +1,5 @@
 import { Icon } from '@chakra-ui/react'
-import { CheckIcon } from '@chakra-ui/icons'
+import { CheckIcon, CloseIcon } from '@chakra-ui/icons'
 import useUpdateIncomplete from '../apis/use-update-incomplete'
 
 interface Props {
@@ -13,5 +13,5 @@ export default function InComplete({ todoId }: Props) {
     await updateStatus.mutateAsync(todoId)
   }
 
-  return <Icon as={CheckIcon} color="green.500" onClick={handleIncomplete} />
+  return <Icon as={CloseIcon} color="#EFBA93" onClick={handleIncomplete} />
 }
