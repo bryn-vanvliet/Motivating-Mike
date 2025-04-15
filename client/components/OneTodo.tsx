@@ -7,6 +7,7 @@ import ConfettiExplosionEffect from './ConfettiExplosion'
 import useUpdateTodoStatus from '../apis/use-update-status'
 import { useState } from 'react'
 import HomePageAvatar from './HomePageAvatar'
+import { CheckIcon } from '@chakra-ui/icons'
 
 interface Props {
   userId: number
@@ -268,7 +269,27 @@ export default function OneTodo({ userId }: Props) {
         </>
       )}
       <ConfettiExplosionEffect isExploding={isExploding} />
-      <Button onClick={handleComplete}>
+
+      <Button
+        onClick={handleComplete}
+        leftIcon={!showComplete ? <CheckIcon color="green" /> : undefined}
+        bg={showComplete ? 'yellow.400' : 'green.300'} // Green background
+        color="#F5F5F5"
+        variant="solid"
+        type="submit"
+        size="md"
+        borderWidth="1px"
+        borderColor="black"
+        fontWeight="bold"
+        _hover={{
+          bg: showComplete ? '#e5d880' : '#1bbf8d',
+          transform: 'translateY(-2px)',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+        }}
+        _active={{
+          bg: showComplete ? 'yellow.500' : 'green.500',
+        }}
+      >
         {showComplete ? 'Smash Another Task!' : 'Complete!'}
       </Button>
     </VStack>

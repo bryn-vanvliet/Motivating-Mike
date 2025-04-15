@@ -7,6 +7,7 @@ import Procrastinate from '../components/Procrastinate'
 import { IfAuthenticated } from '../components/Authenticated'
 
 import { Box, Button, Flex, Spinner, VStack } from '@chakra-ui/react'
+import { SunIcon, WarningIcon } from '@chakra-ui/icons'
 
 export default function Home() {
   const { data: userData, isPending, error } = useUserDataAuth()
@@ -120,11 +121,63 @@ export default function Home() {
 
             {/* Action buttons */}
             <Flex gap={4}>
-              <Button onClick={toggleDopamineHit}>
+              <Button
+                onClick={toggleDopamineHit}
+                leftIcon={
+                  showDopamineHit ? (
+                    <span role="img" aria-label="thinking">
+                      🤔
+                    </span>
+                  ) : (
+                    <SunIcon color="purple.700" />
+                  )
+                }
+                bg={showDopamineHit ? 'blue.300' : 'purple.200'}
+                color="white"
+                variant="solid"
+                size="md"
+                borderWidth="1px"
+                borderColor="black"
+                fontWeight="bold"
+                _hover={{
+                  bg: showDopamineHit ? '#72A6C3' : '#8E7DA3', // Updated hover colors
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                }}
+                _active={{
+                  bg: showDopamineHit ? '#72A6C3' : '#8E7DA3', // Updated active colors
+                }}
+              >
                 {showDopamineHit ? 'Get Real' : 'Dopamine Hit'}
               </Button>
-              <Button onClick={toggleProcrastinate}>
-                {showProcrastinate ? "I'm sorry!" : 'Procrastinate'}
+              <Button
+                onClick={toggleProcrastinate}
+                leftIcon={
+                  showProcrastinate ? (
+                    <span role="img" aria-label="sorry">
+                      😔
+                    </span>
+                  ) : (
+                    <SunIcon color="orange.700" />
+                  )
+                }
+                bg={showProcrastinate ? '#ECF0E8' : '#F45614'} // Updated colors
+                color="#444444" // Changed text color to better match the background
+                variant="solid"
+                size="md"
+                borderWidth="1px"
+                borderColor="black"
+                fontWeight="bold"
+                _hover={{
+                  bg: showProcrastinate ? '#D1D9D2' : '#D64E16', // Updated hover colors
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                }}
+                _active={{
+                  bg: showProcrastinate ? '#D1D9D2' : '#D64E16', // Updated active colors
+                }}
+              >
+                {showProcrastinate ? "I'm Sorry" : 'Procrastinate'}
               </Button>
             </Flex>
           </Box>
