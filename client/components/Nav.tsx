@@ -56,16 +56,16 @@ export default function Nav() {
                     Home
                   </Button>
                   <Button
-                    bgColor="#D7C2DB"
-                    onClick={() => navigate(`/profile`)}
-                  >
-                    Profile
-                  </Button>
-                  <Button
                     bgColor="#B1CFB7"
                     onClick={() => navigate(`/todo-list`)}
                   >
                     Todos
+                  </Button>
+                  <Button
+                    bgColor="#D7C2DB"
+                    onClick={() => navigate(`/profile`)}
+                  >
+                    Profile
                   </Button>
                 </IfAuthenticated>
                 <IfNotAuthenticated>
@@ -73,16 +73,16 @@ export default function Nav() {
                     Home
                   </Button>
                   <Button
-                    bgColor="#B3D9E1"
-                    onClick={() => navigate(`/profile`)}
-                  >
-                    Profile
-                  </Button>
-                  <Button
                     bgColor="#B1CFB7"
                     onClick={() => navigate(`/todo-list`)}
                   >
                     Todos
+                  </Button>
+                  <Button
+                    bgColor="#B3D9E1"
+                    onClick={() => navigate(`/profile`)}
+                  >
+                    Profile
                   </Button>
                 </IfNotAuthenticated>
               </Flex>
