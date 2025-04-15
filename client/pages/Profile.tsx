@@ -23,6 +23,12 @@ export default function UserHomePage() {
   const [stopLoading, setStopLoading] = useState(false)
 
   useEffect(() => {
+    if (userData?.avatarId !== undefined) {
+      setSelectedAvatarId(userData.avatarId)
+    }
+  }, [userData?.avatarId])
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
       setStopLoading(true)
     }, 1500)
