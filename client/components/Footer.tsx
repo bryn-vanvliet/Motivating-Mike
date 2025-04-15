@@ -8,6 +8,7 @@ export default function Footer() {
   return (
     <>
       <Box
+      
         position="absolute"
         bottom={8}
         left="50%"

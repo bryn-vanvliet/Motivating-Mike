@@ -98,7 +98,7 @@ export default function Home() {
   return (
     <Box
       height="100vh"
-      backgroundColor="#B1CFB7"
+      backgroundColor="#B3D9E1"
       display="flex"
       justifyContent="center"
       alignItems="center"
