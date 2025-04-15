@@ -45,7 +45,7 @@ export default function Nav() {
       <Box position="absolute" right={3} top={2}>
         <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
-          <DrawerContent paddingTop={12}>
+          <DrawerContent bgColor="#EFD9AA" paddingTop={12}>
             <DrawerCloseButton m={6} />
             <DrawerHeader></DrawerHeader>
 
@@ -53,20 +53,22 @@ export default function Nav() {
               <Flex direction="column" gap={4}>
                 <IfAuthenticated>
                   {user && <p>Username: {user?.name}</p>}
-                  <VStack marginRight="auto">
-                    <Button onClick={() => navigate(`/`)}>Home</Button>
-                    <Button onClick={() => navigate(`/profile`)}>
-                      Profile
-                    </Button>
-                    <Button onClick={() => navigate(`/todo-list`)}>
-                      Todos
-                    </Button>
-                  </VStack>
+                  <Button bgColor="#D7C2DB" onClick={() => navigate(`/`)}>Home</Button>
+                  <Button bgColor="#B3D9E1" onClick={() => navigate(`/profile`)}>
+                    Profile
+                  </Button>
+                  <Button bgColor="#B1CFB7" onClick={() => navigate(`/todo-list`)}>
+                    Todos
+                  </Button>
                 </IfAuthenticated>
                 <IfNotAuthenticated>
-                  <Button onClick={() => navigate(`/`)}>Home</Button>
-                  <Button onClick={() => navigate(`/Profile/`)}>Profile</Button>
-                  <Button onClick={() => navigate(`/todo-list`)}>Todos</Button>
+                  <Button bgColor="#D7C2DB" onClick={() => navigate(`/`)}>Home</Button>
+                  <Button bgColor="#B3D9E1" onClick={() => navigate(`/profile`)}>
+                    Profile
+                  </Button>
+                  <Button bgColor="#B1CFB7" onClick={() => navigate(`/todo-list`)}>
+                    Todos
+                  </Button>
                 </IfNotAuthenticated>
               </Flex>
             </DrawerBody>
