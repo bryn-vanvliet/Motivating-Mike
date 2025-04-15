@@ -52,11 +52,11 @@ export default function Nav() {
             <DrawerBody>
               <Flex direction="column" gap={4}>
                 <IfAuthenticated>
-                  <Button bgColor="#D7C2DB" onClick={() => navigate(`/`)}>
+                  <Button bgColor="#B3D9E1" onClick={() => navigate(`/`)}>
                     Home
                   </Button>
                   <Button
-                    bgColor="#B3D9E1"
+                    bgColor="#D7C2DB"
                     onClick={() => navigate(`/profile`)}
                   >
                     Profile
