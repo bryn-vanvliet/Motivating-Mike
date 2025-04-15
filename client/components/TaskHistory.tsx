@@ -1,6 +1,18 @@
-import { Box, Divider, Heading, Icon, Text, VStack } from '@chakra-ui/react'
+import {
+  Badge,
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  Icon,
+  List,
+  ListItem,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
 import useTodos from '../apis/use-todos'
 import { FaCheckCircle, FaRegCalendarAlt, FaRegClock } from 'react-icons/fa'
+import DeleteSingleTodo from './DeleteSingleTodo'
 
 interface Props {
   userId: number | null | undefined
@@ -27,54 +39,81 @@ export default function TaskHistory({ userId }: Props) {
 
   return (
     <Box
-      bg="white"
-      p={6}
-      borderRadius="2xl"
-      boxShadow="xl"
-      fontFamily=""
-      maxW="600px"
-      mx="auto"
-      maxHeight="100vh"
+      bg="yellow.50"
+      border="1px solid #ccc"
+      borderRadius="md"
+      px={4}
+      py={2}
+      boxShadow="md"
+      whiteSpace="pre-wrap"
+      width="100%"
+      maxHeight="60vh"
+      overflow="auto"
     >
-      <Box></Box>
-      <Heading size="xl" color="black" mb={6} fontFamily="">
+      <Heading
+        p={2}
+        fontSize="25"
+        lineHeight="30px"
+        fontFamily="'Courier New', monospace"
+        textAlign="center"
+      >
         Task History
       </Heading>
 
       <VStack align="stretch" spacing={6}>
-        {history.map((todo) => (
-          <Box
-            key={todo.id}
-            bg="#fff8e1"
-            p={4}
-            borderRadius="xl"
-            borderLeft="6px solid #ef5350"
-            shadow="md"
-            transition="all 0.2s"
-            _hover={{
-              transform: 'scale(1.02)',
-              boxShadow: 'lg',
-              borderLeftColor: '#66bb6a', // green for hover
-            }}
-          >
-            <Text fontWeight="bold" fontSize="lg" color="#4fc3f7">
-              “{todo.task}”
-            </Text>
-            <Divider my={2} />
-            <Text>
-              <Icon as={FaRegCalendarAlt} color="gray.500" mr={2} />
-              Created: <strong>{todo.created}</strong>
-            </Text>
-            <Text>
-              <Icon as={FaCheckCircle} color="green.400" mr={2} />
-              Completed: <strong>{todo.completed}</strong>
-            </Text>
-            <Text>
-              <Icon as={FaRegClock} color="orange.400" mr={2} />
-              Due: <strong>{todo.due}</strong>
-            </Text>
-          </Box>
-        ))}
+        <List
+          spacing={0}
+          fontSize="md"
+          lineHeight="30px"
+          fontFamily="'Courier New', monospace"
+          width="full"
+        >
+          <ListItem borderBottom="1px solid #ccc" pb={2} mb={2}>
+            <Flex>
+              <Flex direction={'row'} w="full">
+                <Box fontWeight="bold" flexBasis={'33%'} display="flex">
+                  Task
+                </Box>
+                <Box
+                  fontWeight="bold"
+                  flexBasis={'33%'}
+                  display="flex"
+                  justifyContent="center"
+                >
+                  Date / Time
+                </Box>
+                <Box
+                  fontWeight="bold"
+                  flexBasis={'33%'}
+                  display="flex"
+                  justifyContent="end"
+                >
+                  Remove
+                </Box>
+              </Flex>
+            </Flex>
+          </ListItem>
+          {history.map((todo) => (
+            <ListItem key={todo.id} borderBottom="1px solid #ccc" pb={2} mb={2}>
+              <Flex>
+                <Flex direction={'row'} w="full">
+                  <Box flexBasis={'33%'} display="flex">
+                    {todo.task}
+                  </Box>
+                  <Box flexBasis={'33%'} display="flex" justifyContent="center">
+                    {todo.completed}
+                  </Box>
+                  <Box flexBasis={'33%'} display="flex" justifyContent="end">
+                    <Badge ml={2} colorScheme={'green'}>
+                      Complete
+                    </Badge>
+                    <DeleteSingleTodo todoId={todo.id} />
+                  </Box>
+                </Flex>
+              </Flex>
+            </ListItem>
+          ))}
+        </List>
       </VStack>
     </Box>
   )
