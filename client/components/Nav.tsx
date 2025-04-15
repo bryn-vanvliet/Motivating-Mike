@@ -52,7 +52,6 @@ export default function Nav() {
             <DrawerBody>
               <Flex direction="column" gap={4}>
                 <IfAuthenticated>
-                  {user && <p>Username: {user?.name}</p>}
                   <Button bgColor="#D7C2DB" onClick={() => navigate(`/`)}>Home</Button>
                   <Button bgColor="#B3D9E1" onClick={() => navigate(`/profile`)}>
                     Profile
