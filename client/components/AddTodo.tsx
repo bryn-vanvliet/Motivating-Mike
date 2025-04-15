@@ -62,7 +62,7 @@ function AddTodo({ userId }: Props) {
       p={6}
       boxShadow="lg"
       borderRadius="lg"
-      bg="#FAF9F6"
+      bg="yellow.50"
     >
       <Heading mb={6} fontSize="2xl" textAlign="center">
         New Todo
@@ -94,6 +94,7 @@ function AddTodo({ userId }: Props) {
                 transition="all 0.2s"
                 borderRadius="md"
                 borderWidth="1px"
+                bgColor="#EFBA93"
                 _hover={{ bg: 'gray.400' }}
                 _expanded={{ bg: 'blue.400' }}
                 _focus={{ boxShadow: 'outline' }}
@@ -163,7 +164,7 @@ function AddTodo({ userId }: Props) {
             </Box>
           </FormControl>
 
-          <Button colorScheme="blue" type="submit">
+          <Button color="#123456" bgColor="#B3D9E1" type="submit">
             Add Todo
           </Button>
         </VStack>

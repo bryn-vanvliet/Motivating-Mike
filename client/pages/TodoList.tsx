@@ -4,7 +4,6 @@ import DeleteSingleTodo from '../components/DeleteSingleTodo'
 import EditTodo from '../components/EditTodo'
 import {
   IfAuthenticated,
-  IfNotAuthenticated,
 } from '../components/Authenticated'
 
 import { useEffect, useState } from 'react'
@@ -99,17 +98,17 @@ export default function TodoList() {
         <Flex height="100vh">
           <Box
             flex="1"
-            backgroundColor="#B1CFB7"
+            backgroundColor="#EFD9AA"
             display="flex"
             justifyContent="center"
             alignItems="center"
           >
-            <AddTodo userId={userData.id} />
+            <AddTodo userId={userData?.id} />
           </Box>
 
           <Box
             flex="1"
-            backgroundColor="#EFD9AA"
+            backgroundColor="#B1CFB7"
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -232,17 +231,14 @@ export default function TodoList() {
 
               <Box pt={4}>
                 <Link to="/">
-                  <Button colorScheme="blue">Lesh go!</Button>
+                  <Button color="#123456" bgColor="#B3D9E1">Lesh go!</Button>
                 </Link>
               </Box>
             </VStack>
           </Box>
         </Flex>
       </IfAuthenticated>
-      <IfNotAuthenticated>
-        <Button onClick={handleSignIn}>Add Todo</Button>
-        <p>Sign in to see your data</p>
-      </IfNotAuthenticated>
+
     </>
   )
 }

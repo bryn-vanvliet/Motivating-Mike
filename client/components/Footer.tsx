@@ -24,23 +24,13 @@ export default function Footer() {
             zIndex="1"
             width="auto"
           />
-          {/* <Image
-            src="/funPhotos/pencil-paper.webp"
-            alt="A pencil & a book"
-            boxSize="110px"
-            position="absolute"
-            top="31%"
-            left="54.5%"
-            zIndex="1"
-            width="auto"
-          /> */}
           <Image
-            src="/funPhotos/hammer.webp"
-            alt="a hammer"
+            src="/images/motivation-mike-logo-edit.png"
+            alt="Motivating Mike"
             boxSize="128px"
             position="absolute"
-            top="15%"
-            left="29%"
+            top="10%"
+            left="10%"
             zIndex="1"
             width="auto"
           />
@@ -49,7 +39,7 @@ export default function Footer() {
             alt="A lovely tree"
             boxSize="280px"
             position="absolute"
-            top="70%"
+            top="75%"
             left="84%"
             zIndex="1"
             width="auto"
