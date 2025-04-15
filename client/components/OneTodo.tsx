@@ -324,7 +324,7 @@ export default function OneTodo({ userId }: Props) {
           </Text>
           <Button
             onClick={() => navigate(`/todo-list`)}
-            bgColor="#B3D9E1"
+            bgColor="white"
             margin={4}
           >
             Add Todo

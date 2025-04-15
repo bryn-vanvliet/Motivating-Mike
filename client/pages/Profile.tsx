@@ -36,7 +36,7 @@ export default function UserHomePage() {
 
   if (isPending && !stopLoading) {
     return (
-      <Box height="100vh" backgroundColor="#B1CFB7">
+      <Box height="100vh" backgroundColor="#B3D9E1">
         <Flex height="100%" align="center" justify="center">
           <VStack>
             <h2>Loading profile</h2>
@@ -50,7 +50,7 @@ export default function UserHomePage() {
   // -- IfNotAuthenticated Path -- //
   if (!isAuthenticated && stopLoading) {
     return (
-      <Box height="100vh" backgroundColor="#B1CFB7">
+      <Box height="100vh" backgroundColor="#B3D9E1">
         <Flex height="100%" align="center" justify="center">
           <VStack>
             <Button onClick={handleSignIn}>Sign In</Button>
@@ -66,7 +66,7 @@ export default function UserHomePage() {
     userData.avatarId === undefined
   ) {
     return (
-      <Box height="100vh" backgroundColor="#B1CFB7">
+      <Box height="100vh" backgroundColor="#B3D9E1">
         <Flex height="100%" align="center" justify="center">
           <VStack>
             <Button onClick={handleSignIn}>Sign In</Button>
@@ -77,7 +77,7 @@ export default function UserHomePage() {
     )
   }
   if (error) {
-    ;<Box height="100vh" backgroundColor="#B1CFB7">
+    ;<Box height="100vh" backgroundColor="#B3D9E1">
       <Flex height="100%" align="center" justify="center">
         <VStack>
           return <h2>Error: {error.message}</h2>
@@ -87,7 +87,7 @@ export default function UserHomePage() {
   }
 
   return (
-    <Box minHeight="100vh" bg="#FAF9F6">
+    <Box minHeight="100vh" bg="#D7C2DB">
       <IfAuthenticated>
         <Flex
           direction={['column', 'column', 'row', 'row']}
@@ -96,7 +96,7 @@ export default function UserHomePage() {
           px={[4, 8]}
           py={8}
           gap={[8, 4]}
-          bg="#B1CFB7;"
+          bg="#D7C2DB;"
           paddingTop={['10rem', '12rem', '14rem', '17rem']}
           overflow="hidden"
         >

@@ -52,20 +52,36 @@ export default function Nav() {
             <DrawerBody>
               <Flex direction="column" gap={4}>
                 <IfAuthenticated>
-                  <Button bgColor="#D7C2DB" onClick={() => navigate(`/`)}>Home</Button>
-                  <Button bgColor="#B3D9E1" onClick={() => navigate(`/profile`)}>
+                  <Button bgColor="#D7C2DB" onClick={() => navigate(`/`)}>
+                    Home
+                  </Button>
+                  <Button
+                    bgColor="#B3D9E1"
+                    onClick={() => navigate(`/profile`)}
+                  >
                     Profile
                   </Button>
-                  <Button bgColor="#B1CFB7" onClick={() => navigate(`/todo-list`)}>
+                  <Button
+                    bgColor="#B1CFB7"
+                    onClick={() => navigate(`/todo-list`)}
+                  >
                     Todos
                   </Button>
                 </IfAuthenticated>
                 <IfNotAuthenticated>
-                  <Button bgColor="#D7C2DB" onClick={() => navigate(`/`)}>Home</Button>
-                  <Button bgColor="#B3D9E1" onClick={() => navigate(`/profile`)}>
+                  <Button bgColor="#D7C2DB" onClick={() => navigate(`/`)}>
+                    Home
+                  </Button>
+                  <Button
+                    bgColor="#B3D9E1"
+                    onClick={() => navigate(`/profile`)}
+                  >
                     Profile
                   </Button>
-                  <Button bgColor="#B1CFB7" onClick={() => navigate(`/todo-list`)}>
+                  <Button
+                    bgColor="#B1CFB7"
+                    onClick={() => navigate(`/todo-list`)}
+                  >
                     Todos
                   </Button>
                 </IfNotAuthenticated>
@@ -77,10 +93,20 @@ export default function Nav() {
         </Drawer>
         <Flex justify="flex-end" gap={6} marginTop={4}>
           <IfAuthenticated>
-            <Button variant="outline" color="#123456" borderColor="#D7C2DB" borderWidth="4px" onClick={handleSignOut}>Sign Out</Button>
+            <Button
+              variant="outline"
+              color="#123456"
+              borderColor="#D7C2DB"
+              borderWidth="4px"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </Button>
           </IfAuthenticated>
           <IfNotAuthenticated>
-            <Button bgColor="#D7C2DB" onClick={handleSignIn}>Sign In</Button>
+            <Button bgColor="#D7C2DB" onClick={handleSignIn}>
+              Sign In
+            </Button>
           </IfNotAuthenticated>
           <Icon
             as={HamburgerIcon}
