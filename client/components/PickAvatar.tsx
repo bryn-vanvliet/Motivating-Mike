@@ -94,21 +94,19 @@ export default function PickAvatar({
                   boxShadow: `0 0 0 3px ${hoverBorder}`,
                   transition: 'all 0.2s ease-in-out',
                 }}
-                p={4}
+                p={12}
                 borderRadius="xl"
                 bg="white"
                 boxShadow="md"
                 transition="all 0.2s ease-in-out"
               >
-                <Circle size="100px" overflow="hidden" boxShadow="base">
-                  <Image
-                    src={avatar.image}
-                    alt={avatar.name}
-                    objectFit="cover"
-                    width="100%"
-                    height="100%"
-                  />
-                </Circle>
+                <Image
+                  src={avatar.image}
+                  alt={avatar.name}
+                  objectFit="cover"
+                  width="100%"
+                  height="100%"
+                />
                 <Text
                   mt={3}
                   fontWeight="semibold"
