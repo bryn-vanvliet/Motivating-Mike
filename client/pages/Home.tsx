@@ -88,7 +88,7 @@ export default function Home() {
       <Box height="100vh" backgroundColor="#B1CFB7">
         <Flex height="100%" align="center" justify="center">
           <VStack>
-            <h2>Error: {error}</h2>
+            <h2>{`Error: ${error.message}`}</h2>
           </VStack>
         </Flex>
       </Box>
@@ -132,15 +132,14 @@ export default function Home() {
                     <SunIcon color="purple.700" />
                   )
                 }
-                bg={showDopamineHit ? 'blue.300' : 'purple.200'}
+                bg={showDopamineHit ? '#EFBA93' : 'purple.200'}
                 color="white"
                 variant="solid"
                 size="md"
-                borderWidth="1px"
                 borderColor="black"
                 fontWeight="bold"
                 _hover={{
-                  bg: showDopamineHit ? '#72A6C3' : '#8E7DA3', // Updated hover colors
+                  bg: showDopamineHit ? '#D7C2DB' : '#8E7DA3', // Updated hover colors
                   transform: 'translateY(-2px)',
                   boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
                 }}
@@ -161,11 +160,9 @@ export default function Home() {
                     <WarningIcon color="orange.700" />
                   )
                 }
-                bg={showProcrastinate ? '#ECF0E8' : '#F45614'} // Peach background for "I'm Sorry"
-                color={showProcrastinate ? '#444444' : '#444444'} // Lighter black text for "Procrastinate", white for "I'm Sorry"
-                variant="solid"
+                bg={showProcrastinate ? '#B3D9E1' : '#EFBA93'} // Peach background for "I'm Sorry"
+                color={showProcrastinate ? '#FFFFFF' : '#FFFFFF'} // Lighter black text for "Procrastinate", white for "I'm Sorry" variant="solid"
                 size="md"
-                borderWidth="1px"
                 borderColor="black"
                 fontWeight="bold"
                 _hover={{

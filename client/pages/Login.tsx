@@ -85,42 +85,43 @@ export default function Login() {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      fontFamily="'Indie Flower', cursive"
+      fontFamily="monospace"
       border="1px solid #ccc"
       borderRadius="md"
       boxShadow="md"
       fontWeight="bold"
     >
-      {/* <IfAuthenticated> */}
-      <form onSubmit={handleSubmit}>
-        <FormLabel htmlFor="name" as="h3" fontSize="2xl" mb={4}>
-          What shall we call you?
-        </FormLabel>
-        <Input
-          id="name"
-          type="text"
-          spellCheck="false"
-          value={formState.name}
-          onChange={handleChange}
-        />
-        <FormLabel htmlFor="avatarId" as="h3" fontSize="2xl" mb={4} mt={8}>
-          Choose your Motivational avatar
-        </FormLabel>
-        <SimpleGrid columns={3} spacing={6}>
-          {avatars.map((avatar) => (
-            <Button
-              key={avatar.id}
-              style={{ width: '250px', height: '250px' }}
-              type="button"
-              onClick={() => handleSelectAvatar(avatar.id)}
-            >
-              <Image key={avatar.id} src={avatar.src} />
-            </Button>
-          ))}
-        </SimpleGrid>
-        <Button type="submit">submit</Button>
-      </form>
-      {/* </IfAuthenticated> */}
-    </Box>
+      <IfAuthenticated>
+        <form onSubmit={handleSubmit}>
+          <FormLabel htmlFor="name" as="h3" fontSize="2xl" mb={4}>
+            What shall we call you?
+          </FormLabel>
+          <Input
+            id="name"
+            type="text"
+            spellCheck="false"
+            value={formState.name}
+            onChange={handleChange}
+          />
+          <FormLabel htmlFor="avatarId" as="h3" fontSize="2xl" mb={4} mt={8}>
+            Choose your Motivational avatar
+          </FormLabel>
+          <SimpleGrid columns={3} spacing={6}>
+            {avatars.map((avatar) => (
+              <Button
+                key={avatar.id}
+                style={{ width: '250px', height: '250px' }}
+                type="button"
+                onClick={() => handleSelectAvatar(avatar.id)}
+              >
+                <Image key={avatar.id} src={avatar.src} />
+              </Button>
+            ))}
+          </SimpleGrid>
+          <Button marginTop={6} type="submit">submit</Button>
+
+        </form>
+      </IfAuthenticated>
+    </Box >
   )
 }

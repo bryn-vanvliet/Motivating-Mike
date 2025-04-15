@@ -330,16 +330,14 @@ export default function OneTodo({ userId }: Props) {
       <Button
         onClick={handleComplete}
         leftIcon={!showComplete ? <CheckIcon color="green" /> : undefined}
-        bg={showComplete ? 'yellow.400' : 'green.300'} // Green background
-        color="#F5F5F5"
+        bg={showComplete ? '#EFD9AA' : 'green.300'} // Green background
+        color="#3B2F2F"
         variant="solid"
         type="submit"
         size="md"
-        borderWidth="1px"
-        borderColor="black"
         fontWeight="bold"
         _hover={{
-          bg: showComplete ? '#e5d880' : '#1bbf8d',
+          bg: showComplete ? 'yellow.500' : 'green.400', // Darker green on hover
           transform: 'translateY(-2px)',
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         }}
