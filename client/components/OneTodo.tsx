@@ -336,10 +336,11 @@ export default function OneTodo({ userId }: Props) {
         type="submit"
         size="md"
         borderWidth="1px"
-        borderColor="black"
+        borderColor="black" // Black border
+        // Vintage typewriter font
         fontWeight="bold"
         _hover={{
-          bg: showComplete ? '#e5d880' : '#1bbf8d',
+          bg: showComplete ? 'yellow.500' : 'green.400', // Darker green on hover
           transform: 'translateY(-2px)',
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         }}
