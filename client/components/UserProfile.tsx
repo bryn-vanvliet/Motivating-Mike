@@ -47,9 +47,6 @@ export default function UserProfile({
       <Box
         width="330px"
         mx="auto"
-        boxShadow="lg"
-        borderRadius="lg"
-        bg="#FAF9F6"
         textAlign="center"
         display="flex"
         alignItems="center"
@@ -57,7 +54,7 @@ export default function UserProfile({
         height="100px"
       >
         <Heading mb={0} fontSize="2xl" textAlign="center">
-          {user.name}
+          {`User: ${user.name}`}
         </Heading>
       </Box>
 
@@ -65,9 +62,6 @@ export default function UserProfile({
         width="330px"
         mx="auto"
         p={6}
-        boxShadow="lg"
-        borderRadius="lg"
-        bg="#FAF9F6"
         textAlign="center"
         transition="all 0.3s ease"
         _hover={{ transform: 'scale(1.02)' }}
@@ -75,11 +69,10 @@ export default function UserProfile({
         <Image
           src={avatar.image}
           alt={altImage}
-          borderRadius="full"
-          boxSize="150px"
+          boxSize="250px"
           mx="auto"
           mb={4}
-          border="4px solid #4fc3f7"
+          border="1rem solid #B1CFB7"
         />
 
         <Text fontSize="md" color="gray.600" mb={2}>

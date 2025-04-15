@@ -83,7 +83,7 @@ export default function UserHomePage() {
     )
   }
   if (error) {
-    ;<Box height="100vh" backgroundColor="#B3D9E1">
+    ; <Box height="100vh" backgroundColor="#B3D9E1">
       <Flex height="100%" align="center" justify="center">
         <VStack>
           return <h2>Error: {error.message}</h2>
@@ -115,7 +115,7 @@ export default function UserHomePage() {
             marginX="auto"
             alignItems="center"
             gap={6}
-            bg="#FAF9F6"
+            bg="yellow.50"
             p={6}
             borderRadius="xl"
             boxShadow="lg"
@@ -126,16 +126,13 @@ export default function UserHomePage() {
               selectedAvatarId={selectedAvatarId}
             />
             <Button
-              colorScheme="blue"
+              bgColor="#EFBA93"
               onClick={openDrawer}
               px={4}
               py={2}
               transition="all 0.2s"
               borderRadius="md"
               borderWidth="1px"
-              // _hover={{ bg: 'gray.400' }}
-              // _expanded={{ bg: 'blue.400' }}
-              // _focus={{ boxShadow: 'outline' }}
             >
               Change Avatar
             </Button>
