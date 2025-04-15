@@ -1,10 +1,10 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text } from '@chakra-ui/react'
 
 const SpeechBubble = ({ message }: { message: string }) => {
   return (
     <Box
       maxW="300px"
-      p={4}
+      p={2}
       bg="white"
       color="black"
       borderRadius="xl"
@@ -12,6 +12,7 @@ const SpeechBubble = ({ message }: { message: string }) => {
       position="relative"
       boxShadow="lg"
       fontFamily="'Comic Sans MS', 'Comic Neue', cursive"
+      mt="20"
     >
       <Text fontSize="lg">{message}</Text>
 
@@ -39,7 +40,7 @@ const SpeechBubble = ({ message }: { message: string }) => {
         zIndex="2"
       />
     </Box>
-  );
-};
+  )
+}
 
-export default SpeechBubble;
+export default SpeechBubble

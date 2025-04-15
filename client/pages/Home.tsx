@@ -154,30 +154,30 @@ export default function Home() {
                 onClick={toggleProcrastinate}
                 leftIcon={
                   showProcrastinate ? (
-                    <span role="img" aria-label="sorry">
+                    <span role="img" aria-label="warning">
                       😔
                     </span>
                   ) : (
-                    <SunIcon color="orange.700" />
+                    <WarningIcon color="orange.700" />
                   )
                 }
-                bg={showProcrastinate ? '#ECF0E8' : '#F45614'} // Updated colors
-                color="#444444" // Changed text color to better match the background
+                bg={showProcrastinate ? '#ECF0E8' : '#F45614'} // Peach background for "I'm Sorry"
+                color={showProcrastinate ? '#444444' : '#444444'} // Lighter black text for "Procrastinate", white for "I'm Sorry"
                 variant="solid"
                 size="md"
                 borderWidth="1px"
                 borderColor="black"
                 fontWeight="bold"
                 _hover={{
-                  bg: showProcrastinate ? '#D1D9D2' : '#D64E16', // Updated hover colors
+                  bg: showProcrastinate ? '#D1D9D2' : '#C68C4E', // Lighter peach hover for "I'm Sorry"
                   transform: 'translateY(-2px)',
                   boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
                 }}
                 _active={{
-                  bg: showProcrastinate ? '#D1D9D2' : '#D64E16', // Updated active colors
+                  bg: showProcrastinate ? '#D1D9D2' : '#C68C4E', // Active color for "I'm Sorry"
                 }}
               >
-                {showProcrastinate ? "I'm Sorry" : 'Procrastinate'}
+                {showProcrastinate ? "I'm sorry!" : 'Procrastinate'}
               </Button>
             </Flex>
           </Box>
