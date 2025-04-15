@@ -105,7 +105,9 @@ export default function TaskHistory({ userId }: Props) {
                     <Badge ml={2} colorScheme={'green'}>
                       Complete
                     </Badge>
-                    <InComplete todoId={todo.id} />
+                    <Box paddingX={2}>
+                      <InComplete todoId={todo.id} />
+                    </Box>
                     <DeleteSingleTodo todoId={todo.id} />
                   </Box>
                 </Flex>
