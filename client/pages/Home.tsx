@@ -7,6 +7,7 @@ import Procrastinate from '../components/Procrastinate'
 import { IfAuthenticated } from '../components/Authenticated'
 
 import { Box, Button, Flex, Spinner, VStack } from '@chakra-ui/react'
+import { SunIcon, WarningIcon } from '@chakra-ui/icons'
 
 export default function Home() {
   const { data: userData, isPending, error } = useUserDataAuth()
@@ -120,10 +121,62 @@ export default function Home() {
 
             {/* Action buttons */}
             <Flex gap={4}>
-              <Button onClick={toggleDopamineHit}>
+              <Button
+                onClick={toggleDopamineHit}
+                leftIcon={
+                  showDopamineHit ? (
+                    <span role="img" aria-label="thinking">
+                      🤔
+                    </span>
+                  ) : (
+                    <SunIcon color="purple.700" />
+                  )
+                }
+                bg={showDopamineHit ? 'blue.300' : 'purple.200'}
+                color="white"
+                variant="solid"
+                size="md"
+                borderWidth="1px"
+                borderColor="black"
+                fontWeight="bold"
+                _hover={{
+                  bg: showDopamineHit ? '#72A6C3' : '#8E7DA3', // Updated hover colors
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                }}
+                _active={{
+                  bg: showDopamineHit ? '#72A6C3' : '#8E7DA3', // Updated active colors
+                }}
+              >
                 {showDopamineHit ? 'Get Real' : 'Dopamine Hit'}
               </Button>
-              <Button onClick={toggleProcrastinate}>
+              <Button
+                onClick={toggleProcrastinate}
+                leftIcon={
+                  showProcrastinate ? (
+                    <span role="img" aria-label="warning">
+                      😔
+                    </span>
+                  ) : (
+                    <WarningIcon color="orange.700" />
+                  )
+                }
+                bg={showProcrastinate ? '#ECF0E8' : '#F45614'} // Peach background for "I'm Sorry"
+                color={showProcrastinate ? '#444444' : '#444444'} // Lighter black text for "Procrastinate", white for "I'm Sorry"
+                variant="solid"
+                size="md"
+                borderWidth="1px"
+                borderColor="black"
+                fontWeight="bold"
+                _hover={{
+                  bg: showProcrastinate ? '#D1D9D2' : '#C68C4E', // Lighter peach hover for "I'm Sorry"
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                }}
+                _active={{
+                  bg: showProcrastinate ? '#D1D9D2' : '#C68C4E', // Active color for "I'm Sorry"
+                }}
+              >
                 {showProcrastinate ? "I'm sorry!" : 'Procrastinate'}
               </Button>
             </Flex>
