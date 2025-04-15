@@ -53,24 +53,18 @@ export default function Procrastinate({ userId }: Props) {
 
   return (
     <>
-    <Box
-            position="relative"
-            transform="translateX(40%)"
-           
-            mb={2}
-          >
-      <OneHeckle
-        userId={userData.id}
-        avatarId={userData.avatarId}
-        urgency={4}
-      />
+      <Box position="relative" transform="translateX(40%)" mb={2}>
+        <OneHeckle
+          userId={userData.id}
+          avatarId={userData.avatarId}
+          urgency={4}
+        />
       </Box>
-        <Box position="relative" display="inline-block">
-                    <Box boxSize="200px" borderRadius="full" overflow="hidden">
-                      <HomePageAvatar avatarId={userData.avatarId} />
-                </Box>
-                </Box>
-       
+      <Box position="relative" display="inline-block">
+        <Box boxSize="200px" borderRadius="full" overflow="hidden">
+          <HomePageAvatar avatarId={userData.avatarId} />
+        </Box>
+      </Box>
     </>
   )
 }
