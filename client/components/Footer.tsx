@@ -27,10 +27,10 @@ export default function Footer() {
           <Image
             src="/images/motivation-mike-logo-edit.png"
             alt="Motivating Mike"
-            boxSize="128px"
+            boxSize="140px"
             position="absolute"
-            top="10%"
-            left="10%"
+            top="7%"
+            left="4%"
             zIndex="1"
             width="auto"
           />
@@ -39,7 +39,7 @@ export default function Footer() {
             alt="A lovely tree"
             boxSize="280px"
             position="absolute"
-            top="75%"
+            top="69%"
             left="84%"
             zIndex="1"
             width="auto"
@@ -79,12 +79,12 @@ export default function Footer() {
             alt="A squirell holding an acorn"
             boxSize="120px"
             position="absolute"
-            left="9%"
+            left="11%"
             top="79%"
             zIndex="1"
             width="auto"
           />
-          {/* Add other images here */}
+          
         </Box>
       </Flex>
     </>
